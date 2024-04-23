@@ -1,0 +1,13 @@
+{
+    "userId": null,
+    "title": "Swimming",
+    "activityTypeId": null,
+    "startDate": null,
+    "distance": 200,
+    "duration": null,
+    "intensity": 650,
+    "calories": 250,
+    "steps": 3000,
+    "additionalNotes": "Did Swimming with 2 rounds of 250 m long pool"
+
+}
