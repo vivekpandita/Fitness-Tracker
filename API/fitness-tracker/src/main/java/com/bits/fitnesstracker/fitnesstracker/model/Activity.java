@@ -2,10 +2,13 @@ package com.bits.fitnesstracker.fitnesstracker.model;
 
 import java.util.Date;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Activity {
@@ -14,7 +17,13 @@ public class Activity {
 	private Long id;
 	private Long userId;
 	private String title;
-	private Long activityTypeId;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "activityTypeId", referencedColumnName = "id")
+	private ActivityType activityType;
+	
+	
+//	private Long activityTypeId;
 	private Date startDate;
 	private Long distance;
 	private Long duration;
@@ -26,13 +35,24 @@ public class Activity {
 	public Activity() {
 	}
 
+	
+	public ActivityType getActivityType() {
+		return activityType;
+	}
+
+
+	public void setActivityType(ActivityType activityType) {
+		this.activityType = activityType;
+	}
+
+
 	public Activity(Long id, Long userId, String title, Long activityTypeId, Date startDate, Long distance,
 			Long duration, Long intensity, Long calories, Long steps, String additionalNotes) {
 		super();
 		this.id = id;
 		this.userId = userId;
 		this.title = title;
-		this.activityTypeId = activityTypeId;
+//		this.activityTypeId = activityTypeId;
 		this.startDate = startDate;
 		this.distance = distance;
 		this.duration = duration;
@@ -66,13 +86,13 @@ public class Activity {
 		this.title = title;
 	}
 
-	public Long getActivityTypeId() {
-		return activityTypeId;
-	}
-
-	public void setActivityTypeId(Long activityTypeId) {
-		this.activityTypeId = activityTypeId;
-	}
+//	public Long getActivityTypeId() {
+//		return activityTypeId;
+//	}
+//
+//	public void setActivityTypeId(Long activityTypeId) {
+//		this.activityTypeId = activityTypeId;
+//	}
 
 	public Date getStartDate() {
 		return startDate;
@@ -133,7 +153,7 @@ public class Activity {
 	@Override
 	public String toString() {
 		return "ActivityItem [id=" + id + ", userId=" + userId + ", title=" + title + ", activityTypeId="
-				+ activityTypeId + ", startDate=" + startDate + ", distance=" + distance + ", duration=" + duration
+				+ 2 + ", startDate=" + startDate + ", distance=" + distance + ", duration=" + duration
 				+ ", intensity=" + intensity + ", calories=" + calories + ", steps=" + steps + ", additionalNotes="
 				+ additionalNotes + "]";
 	}

@@ -13,6 +13,9 @@ public class ActivityType {
 	private String abbreviation;
 	private String description;
 
+	public ActivityType() {
+	}
+
 	public ActivityType(Long id, String abbreviation, String description) {
 		super();
 		this.id = id;
@@ -22,8 +25,7 @@ public class ActivityType {
 
 	@Override
 	public String toString() {
-		return "ActivityType [id=" + id + ", abbreviation=" + abbreviation + ", description="
-				+ description + "]";
+		return "ActivityType [id=" + id + ", abbreviation=" + abbreviation + ", description=" + description + "]";
 	}
 
 	public Long getId() {
