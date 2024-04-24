@@ -1,6 +1,9 @@
 package com.bits.fitnesstracker.fitnesstracker.controller;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,5 +34,14 @@ public class ActivityController {
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public List<Activity> list() {
 		return activityRepository.findAll();
+	}
+
+	@RequestMapping(value = "/todaysList", method = RequestMethod.GET)
+	public List<Activity> TODAYSlist() {
+		Date d = new Date();
+		d.setHours(0);
+		d.setMinutes(0);
+		d.setSeconds(0);
+		return activityRepository.findByStartDate(new Timestamp(d.getTime()).toString());
 	}
 }
