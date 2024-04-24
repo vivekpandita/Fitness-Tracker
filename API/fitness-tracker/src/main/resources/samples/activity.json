@@ -1,13 +1,17 @@
 {
+    "id": 5002,
     "userId": null,
     "title": "Swimming",
-    "activityTypeId": null,
-    "startDate": null,
-    "distance": 200,
+    "activityType": {
+      "id": 1002,
+      "abbreviation": "SW",
+      "description": "Swimming"
+    },
+    "startDate": "2023-11-28T17:58:12.776+00:00",
+    "distance": null,
     "duration": null,
-    "intensity": 650,
-    "calories": 250,
-    "steps": 3000,
-    "additionalNotes": "Did Swimming with 2 rounds of 250 m long pool"
-
-}
+    "intensity": null,
+    "calories": null,
+    "steps": 10,
+    "additionalNotes": "Did Swimming in a 100m pool with 2 full rounds"
+  }
