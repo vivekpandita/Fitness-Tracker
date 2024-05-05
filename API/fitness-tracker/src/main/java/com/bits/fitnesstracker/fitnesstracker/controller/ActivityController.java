@@ -3,7 +3,6 @@ package com.bits.fitnesstracker.fitnesstracker.controller;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,12 +21,12 @@ public class ActivityController {
 	private ActivityRepository activityRepository;
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public Activity getUIMetadata(@PathVariable(name = "id") Long id) {
+	public Activity getActivityById(@PathVariable(name = "id") Long id) {
 		return activityRepository.getActivityById(id);
 	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public Activity reloadAllBundles(@RequestBody(required = false) Activity body) {
+	public Activity save(@RequestBody(required = false) Activity body) {
 		return activityRepository.save(body);
 	}
 

@@ -9,27 +9,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bits.fitnesstracker.fitnesstracker.db.ActivityTypeRepository;
-import com.bits.fitnesstracker.fitnesstracker.model.ActivityType;
+import com.bits.fitnesstracker.fitnesstracker.db.GoalRepository;
+import com.bits.fitnesstracker.fitnesstracker.model.Goal;
 
 @RestController
-@RequestMapping("/activityType")
-public class ActivityTypeController {
+@RequestMapping("/goal")
+public class GoalController {
 	@Autowired
-	private ActivityTypeRepository activityTypeRepository;
+	private GoalRepository goalRepository;
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ActivityType getActivityTypeById(@PathVariable(name = "id") Long id) {
-		return activityTypeRepository.getActivityTypeById(id);
+	public Goal getGoalById(@PathVariable(name = "id") Long id) {
+		return goalRepository.getGoalById(id);
 	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public ActivityType save(@RequestBody(required = false) ActivityType body) {
-		return activityTypeRepository.save(body);
+	public Goal save(@RequestBody(required = false) Goal body) {
+		return goalRepository.save(body);
 	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public List<ActivityType> list() {
-		return activityTypeRepository.findAll();
+	public List<Goal> list() {
+		return goalRepository.findAll();
 	}
 }
