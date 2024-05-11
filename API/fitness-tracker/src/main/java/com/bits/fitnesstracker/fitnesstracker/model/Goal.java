@@ -15,6 +15,10 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Transient;
 
+/**
+ * @author vivek
+ *
+ */
 @Entity
 public class Goal {
 	@Id

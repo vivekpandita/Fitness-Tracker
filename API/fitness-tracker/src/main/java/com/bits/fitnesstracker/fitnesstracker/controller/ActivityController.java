@@ -16,6 +16,10 @@ import com.bits.fitnesstracker.fitnesstracker.db.ActivityRepository;
 import com.bits.fitnesstracker.fitnesstracker.db.ActivityTypeRepository;
 import com.bits.fitnesstracker.fitnesstracker.model.Activity;
 
+/**
+ * @author vivek
+ *
+ */
 @RestController
 @RequestMapping("/activity")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
