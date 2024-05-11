@@ -1,0 +1,28 @@
+{
+        "id": 4,
+        "goalType": {
+            "id": 2002,
+            "abbreviation": "MG",
+            "description": "Muscle Gain"
+        },
+        "goalTypeID": 2002,
+        "userId": null,
+        "goalSetting": [
+            {
+                "id": 9,
+                "goalKey": "Max. Weight for Biceps",
+                "goalValue": 15,
+                "goalUnit": "Kg",
+                "durationValue": 5,
+                "durationUnit": "days"
+            },
+            {
+                "id": 10,
+                "goalKey": "Max. Weight for Chest",
+                "goalValue": 55,
+                "goalUnit": "Kg",
+                "durationValue": 2,
+                "durationUnit": "days"
+            }
+        ]
+}
