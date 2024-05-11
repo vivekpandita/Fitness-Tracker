@@ -1,5 +1,6 @@
 package com.bits.fitnesstracker.fitnesstracker.controller;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -41,13 +42,24 @@ public class GoalController {
 		if (body.getGoalType() == null && body.getGoalTypeID() != null) {
 			body.setGoalType(goalTypeRepository.getGoalTypeById(body.getGoalTypeID()));
 		}
+
+		if (body.getGoalSetting() == null) {
+			Set<GoalSetting> gsSet = new HashSet<>();
+			GoalSetting item = new GoalSetting();
+			item.setGoalValue(body.getGoalValue());
+			item.setGoalUnit(body.getGoalUnit());
+			item.setDurationUnit(body.getDurationUnit());
+			item.setDurationValue(body.getDurationValue());
+			gsSet.add(item);
+			body.setGoalSetting(gsSet);
+		}
 		Set<GoalSetting> gs = body.getGoalSetting();
 		Goal g = goalRepository.save(body);
-//		gs = gs.stream().map(g1 -> {
-//			g1.setGoal(g);
-//			return goalSettingRepository.save(g1);
-//		}).collect(Collectors.toSet());
-//		g.setGoalSetting(gs);
+		gs = gs.stream().map(g1 -> {
+			g1.setGoal(g);
+			return goalSettingRepository.save(g1);
+		}).collect(Collectors.toSet());
+		g.setGoalSetting(gs);
 		return g;
 	}
 
