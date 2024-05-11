@@ -36,6 +36,10 @@ public class ActivityController {
 		if (body.getActivityType() == null && body.getActivityTypeID() != null) {
 			body.setActivityType(activityTypeRepository.getActivityTypeById(body.getActivityTypeID()));
 		}
+		if(body.getStartDate() == null)
+		{
+			body.setStartDate(new Date());
+		}
 		return activityRepository.save(body);
 	}
 
