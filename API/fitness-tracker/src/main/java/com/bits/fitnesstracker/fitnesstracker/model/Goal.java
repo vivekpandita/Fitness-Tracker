@@ -2,14 +2,19 @@ package com.bits.fitnesstracker.fitnesstracker.model;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Transient;
 
 @Entity
 public class Goal {
@@ -21,9 +26,13 @@ public class Goal {
 	@JoinColumn(name = "goalTypeId", referencedColumnName = "id")
 	private GoalType goalType;
 
+	@Transient
+	private Long goalTypeID;
+
 	private Long userId;
 
-	@OneToMany(mappedBy = "goal", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonManagedReference
+	@OneToMany(mappedBy = "goal", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private Set<GoalSetting> goalSetting;
 
 	public Goal() {
@@ -59,6 +68,14 @@ public class Goal {
 
 	public void setGoalSetting(Set<GoalSetting> goalSetting) {
 		this.goalSetting = goalSetting;
+	}
+
+	public Long getGoalTypeID() {
+		return goalTypeID != null ? goalTypeID : (goalType != null ? goalType.getId() : null);
+	}
+
+	public void setGoalTypeID(Long goalTypeID) {
+		this.goalTypeID = goalTypeID;
 	}
 
 }

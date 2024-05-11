@@ -1,5 +1,7 @@
 package com.bits.fitnesstracker.fitnesstracker.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,9 +13,10 @@ import jakarta.persistence.ManyToOne;
 public class GoalSetting {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) // Ensure unique identifier for GoalSetting
+	@GeneratedValue(strategy = GenerationType.SEQUENCE) // Ensure unique identifier for GoalSetting
 	private Long id;
 
+    @JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "goal_Id")
 	private Goal goal;
