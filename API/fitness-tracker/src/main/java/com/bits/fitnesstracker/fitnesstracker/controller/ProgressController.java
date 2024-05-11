@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bits.fitnesstracker.fitnesstracker.db.ActivityRepository;
-import com.bits.fitnesstracker.fitnesstracker.db.GoalRepository;
 import com.bits.fitnesstracker.fitnesstracker.model.Activity;
 
 @RestController
@@ -30,9 +29,6 @@ public class ProgressController {
 
 	@Autowired
 	private ActivityRepository activityRepository;
-
-	@Autowired
-	private GoalRepository goalRepository;
 
 	@RequestMapping(value = "/user/{userId}", method = RequestMethod.GET)
 	public Map<String, Long> getProgressForUser(@PathVariable(name = "userId") Long id) {
