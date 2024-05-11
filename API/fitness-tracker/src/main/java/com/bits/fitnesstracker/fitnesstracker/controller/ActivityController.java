@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,13 +13,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bits.fitnesstracker.fitnesstracker.db.ActivityRepository;
+import com.bits.fitnesstracker.fitnesstracker.db.ActivityTypeRepository;
 import com.bits.fitnesstracker.fitnesstracker.model.Activity;
 
 @RestController
 @RequestMapping("/activity")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ActivityController {
 	@Autowired
 	private ActivityRepository activityRepository;
+
+	@Autowired
+	private ActivityTypeRepository activityTypeRepository;
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public Activity getActivityById(@PathVariable(name = "id") Long id) {
@@ -27,6 +33,9 @@ public class ActivityController {
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public Activity save(@RequestBody(required = false) Activity body) {
+		if (body.getActivityType() == null && body.getActivityTypeID() != null) {
+			body.setActivityType(activityTypeRepository.getActivityTypeById(body.getActivityTypeID()));
+		}
 		return activityRepository.save(body);
 	}
 

@@ -9,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Transient;
 
 @Entity
 public class Activity {
@@ -17,12 +18,11 @@ public class Activity {
 	private Long id;
 	private Long userId;
 	private String title;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "activityTypeId", referencedColumnName = "id")
+	@JoinColumn(name = "activityTypeId", referencedColumnName = "id")
 	private ActivityType activityType;
-	
-	
+
 //	private Long activityTypeId;
 	private Date startDate;
 	private Long distance;
@@ -32,19 +32,19 @@ public class Activity {
 	private Long steps;
 	private String additionalNotes;
 
+	@Transient
+	private Long activityTypeID;
+
 	public Activity() {
 	}
 
-	
 	public ActivityType getActivityType() {
 		return activityType;
 	}
 
-
 	public void setActivityType(ActivityType activityType) {
 		this.activityType = activityType;
 	}
-
 
 	public Activity(Long id, Long userId, String title, Long activityTypeId, Date startDate, Long distance,
 			Long duration, Long intensity, Long calories, Long steps, String additionalNotes) {
@@ -152,10 +152,18 @@ public class Activity {
 
 	@Override
 	public String toString() {
-		return "ActivityItem [id=" + id + ", userId=" + userId + ", title=" + title + ", activityTypeId="
-				+ 2 + ", startDate=" + startDate + ", distance=" + distance + ", duration=" + duration
-				+ ", intensity=" + intensity + ", calories=" + calories + ", steps=" + steps + ", additionalNotes="
-				+ additionalNotes + "]";
+		return "ActivityItem [id=" + id + ", userId=" + userId + ", title=" + title + ", activityTypeId=" + 2
+				+ ", startDate=" + startDate + ", distance=" + distance + ", duration=" + duration + ", intensity="
+				+ intensity + ", calories=" + calories + ", steps=" + steps + ", additionalNotes=" + additionalNotes
+				+ "]";
+	}
+
+	public Long getActivityTypeID() {
+		return activityTypeID != null ? activityTypeID : (activityType != null ? activityType.getId() : null);
+	}
+
+	public void setActivityTypeID(Long activityTypeID) {
+		this.activityTypeID = activityTypeID;
 	}
 
 }
