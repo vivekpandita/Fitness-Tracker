@@ -7,6 +7,9 @@ import { useSelector } from "react-redux";
 import Navbar from "./components/Navbar";
 import Dashboard from "./pages/Dashboard";
 import Workouts from "./pages/Workouts";
+import Goals from "./pages/Goals";
+import Progresses from "./pages/Progresses"
+import Workoutplans from "./pages/Workoutplans";
 
 const Container = styled.div`
   width: 100%;
@@ -22,10 +25,11 @@ const Container = styled.div`
 
 function App() {
   const { currentUser } = useSelector((state) => state.user);
+  //const { currentUser } = true;
   return (
     <ThemeProvider theme={lightTheme}>
       <BrowserRouter>
-        {currentUser ? (
+        {/* {currentUser ? (
           <Container>
             <Navbar currentUser={currentUser} />
             <Routes>
@@ -37,7 +41,17 @@ function App() {
           <Container>
             <Authentication />
           </Container>
-        )}
+        )} */}
+        <Container>
+            <Navbar currentUser={currentUser} />
+            <Routes>
+              <Route path="/" exact element={<Dashboard />} />
+              <Route path="/workouts" exact element={<Workouts />} />
+              <Route path="/goals" exact element={<Goals />} />
+              <Route path="/progresses" exact element={<Progresses />} />
+              <Route path="/plans" exact element={<Workoutplans />} />
+            </Routes>
+          </Container>
       </BrowserRouter>
     </ThemeProvider>
   );
