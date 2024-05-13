@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import LogoImage from "../utils/Images/Logo2.png";
-import AuthImage from "../utils/Images/AuthImage2.jpg";
+import LogoImage from "../utils/Images/Logo.png";
+import AuthImage from "../utils/Images/AuthImage.jpg";
 import SignIn from "../components/SignIn";
 import SignUp from "../components/SignUp";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   flex: 1;
@@ -24,8 +25,8 @@ const Left = styled.div`
 const Logo = styled.img`
   position: absolute;
   width: 70px;
-  top: 10px;
-  left: 10px;
+  top: 40px;
+  left: 60px;
   z-index: 10;
 `;
 const Image = styled.img`
@@ -64,15 +65,24 @@ const TextButton = styled.span`
 
 const Authentication = () => {
   const [login, setLogin] = useState(false);
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/Dashboard");
+  };
   return (
     <Container>
+      <Left>
+        <Logo src={LogoImage} />
+        <Image src={AuthImage} />
+      </Left>
       <Right>
         {!login ? (
           <>
             <SignIn />
             <Text>
               Don't have an account?{" "}
-              <TextButton onClick={() => setLogin(true)}>SignUp</TextButton>
+              {/* <TextButton onClick={() => setLogin(true)}>SignUp</TextButton>               */}
+              <TextButton onClick={handleClick}>SignUp</TextButton>
             </Text>
           </>
         ) : (
@@ -80,16 +90,12 @@ const Authentication = () => {
             <SignUp />
             <Text>
               Already have an account?{" "}
-              <TextButton onClick={() => setLogin(false)}>SignIn</TextButton>
+              {/* <TextButton onClick={() => setLogin(false)}>SignIn</TextButton> */}
+              <TextButton onClick={handleClick}>SignIn</TextButton>
             </Text>
           </>
         )}
       </Right>
-      <Left>
-        {/* <Logo src={LogoImage} /> */}
-        <Image src={AuthImage} />
-      </Left>
-      
     </Container>
   );
 };
