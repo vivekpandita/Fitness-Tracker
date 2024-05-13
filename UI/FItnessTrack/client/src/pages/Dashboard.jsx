@@ -395,18 +395,7 @@ const [goal, setGoal] = useState(
           /> */}
         </FlexWrap>
 
-        <Title>Progress</Title>
-        <FlexWrap>
-          {/* {counts.map((item) => (
-            <CountsCard item={item} data={data} />
-          ))} */}
-          {/* {countss.map((item) => (
-            <CountsCard totalDuration={item.totalDuration} totalSteps={item.totalSteps} totalCalories={item.totalCalories} totalDistance={item.totalDistance} />
-          ))} */}
-          
-          <CountsCard countss={countss} />
-          
-        </FlexWrap>
+        
 
         {/* <FlexWrap>
           <WeeklyStatCard data={data} />

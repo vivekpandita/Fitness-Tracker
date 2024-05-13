@@ -143,9 +143,9 @@ const Navbar = ({ currentUser }) => {
 
         <MobileMenu isOpen={isOpen}>
           <Navlink to="/">Dashboard</Navlink>
-          <Navlink to="/workouts">Workouts</Navlink>
+          {/* <Navlink to="/workouts">Workouts</Navlink> */}
           <Navlink to="/goals">Goals</Navlink>
-          <Navlink to="/progresses">Progresses</Navlink>
+          <Navlink to="/progresses">Progress</Navlink>
           <Navlink to="/plans">Workout Plans</Navlink>
           {/* <Navlink to="/blogs">Blogs</Navlink>
           <Navlink to="/contact">Contact</Navlink> */}
@@ -153,9 +153,9 @@ const Navbar = ({ currentUser }) => {
 
         <NavItems>
           <Navlink to="/">Dashboard</Navlink>
-          <Navlink to="/workouts">Acitivities</Navlink>
+          {/* <Navlink to="/workouts">Acitivities</Navlink> */}
           <Navlink to="/goals">Goals</Navlink>
-          <Navlink to="/progresses">Progresses</Navlink>
+          <Navlink to="/progresses">Progress</Navlink>
           <Navlink to="/plans">Plans</Navlink>
           {/* <Navlink to="/blogs">Blogs</Navlink>
           <Navlink to="/contact">Contact</Navlink> */}

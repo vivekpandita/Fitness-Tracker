@@ -61,14 +61,27 @@ const AddWorkout = ({ workout, setWorkout, addNewWorkout, buttonLoading }) => {
         value={workout.description}
         placeholder={`Activity Description`}
       /> */}
-      <label>Activity Type ID:</label>
+      {/* <label>Activity Type ID:</label>
       <input        
         label="activityTypeID"
         type="text"        
         onChange={(e) => setWorkout({ ...workout, id: +e.target.value })}
         value={workout.activityTypeID}
         placeholder={`Activity Type ID`}
-      />
+      /> */}
+      <label htmlFor="activityType">Select Activity:</label>
+      <select id="activityType" onChange={(e) => setWorkout({ ...workout, activityTypeID: +e.target.value })}>
+        <option value="">Select an activity...</option>
+        <option value="1000">Walking</option>
+        <option value="1001">Running</option>
+        <option value="1002">Swimming</option>
+        <option value="1003">Yoga</option>
+        <option value="1004">Dancing</option>
+        <option value="1005">Gymnastics</option>
+        <option value="1006">Weight Training</option>
+        <option value="1007">Zumba</option>
+      </select>
+      {/* {activityType && <p>Selected activity: {activityType}</p>} */}
       <label>Steps:</label>
       <input        
         label="steps"

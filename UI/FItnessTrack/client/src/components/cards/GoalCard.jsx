@@ -51,10 +51,10 @@ const Details = styled.div`
   gap: 6px;
 `;
 
-const GoalCard = ({goalTitle, goalValue, goalUnit, durationValue, durationUnit}) => {  
+const GoalCard = ({goalType, goalTitle, goalValue, goalUnit, durationValue, durationUnit}) => {  
   return (
     <Card>      
-      <Category>#Goal</Category>
+      <Category>{goalType}</Category>
       <Name>{goalTitle}</Name>
       <Sets>
         <Details>

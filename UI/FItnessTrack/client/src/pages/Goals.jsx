@@ -199,41 +199,43 @@ const Goals = () => {
     ];
     const goalss =  [     
         {
-            "id":4,
-            "goalTitle": "Goal 1",
+            "id":1,
+            "goalType": "Weight Management",
+            "goalTitle": "Weight Loss",
             "goalTypeID" : 2000,
-            "goalValue": 30,
-            "goalUnit": "inches",
-            "durationValue": 200,
+            "goalValue": 70,
+            "goalUnit": "Kg",
+            "durationValue": 100,
             "durationUnit": "days" 
         },
         {
-            "id":4,
-            "goalTitle": "Goal 2",
+            "id":2,
+            "goalType": "Muscle Management",
+            "goalTitle": "Muscle Gain",
             "goalTypeID" : 2000,
             "goalValue": 5,
             "goalUnit": "inches",
-            "durationValue": 30,
-            "durationUnit": "days" 
-        },
-        {
-            "id":4,
-            "goalTitle": "Goal 3",
-            "goalTypeID" : 2000,
-            "goalValue": 25,
-            "goalUnit": "inches",
             "durationValue": 60,
             "durationUnit": "days" 
-        },
-        {
-            "id":4,
-            "goalTitle": "Goal 4",
-            "goalTypeID" : 2000,
-            "goalValue": 15,
-            "goalUnit": "inches",
-            "durationValue": 40,
-            "durationUnit": "days" 
-        }    
+        }
+        // {
+        //     "id":3,
+        //     "goalTitle": "Goal 3",
+        //     "goalTypeID" : 2000,
+        //     "goalValue": 25,
+        //     "goalUnit": "inches",
+        //     "durationValue": 60,
+        //     "durationUnit": "days" 
+        // },
+        // {
+        //     "id":4,
+        //     "goalTitle": "Goal 4",
+        //     "goalTypeID" : 2000,
+        //     "goalValue": 15,
+        //     "goalUnit": "inches",
+        //     "durationValue": 40,
+        //     "durationUnit": "days" 
+        // }    
       ];
   const [loading, setLoading] = useState(false);
   const [goalsss, setData] = useState([]);
@@ -353,7 +355,7 @@ const [goal, setGoal] = useState(
           <CardWrapper>            
             
             {goalss.map((goal) => (
-              <GoalCard goalTitle={goal.goalTitle} goalValue={goal.goalValue} goalUnit={goal.goalUnit} durationValue={goal.durationValue} durationUnit={goal.durationUnit} />
+              <GoalCard goalType={goal.goalType} goalTitle={goal.goalTitle} goalValue={goal.goalValue} goalUnit={goal.goalUnit} durationValue={goal.durationValue} durationUnit={goal.durationUnit} />
             ))}            
             
           </CardWrapper>

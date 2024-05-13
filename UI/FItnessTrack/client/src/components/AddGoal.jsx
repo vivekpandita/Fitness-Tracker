@@ -93,7 +93,7 @@ const AddGoal = ({ goal, setGoal, addNewGoal, goalbuttonLoading }) => {
         placeholder={`Duration Unit`}
       />
       <Button
-        text="Add Activity"
+        text="Add Goal"
         small
         onClick={() => addNewGoal()}
         isLoading={goalbuttonLoading}

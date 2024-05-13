@@ -231,7 +231,7 @@ const [plan, setPlan] = useState(
         <Title>Pre-designed workout plans tailored to your needs</Title>       
 
         <Section>
-          <Title>My Goals</Title>
+          {/* <Title>My Plans</Title> */}
           <CardWrapper>            
             
             {planss.map((plan) => (
